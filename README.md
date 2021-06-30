@@ -22,3 +22,7 @@ Display one of two images on a virtual webcam depending on how loud your microph
 python3 ./ventriloquist.py ./path/to/quiet/image.png ./path/to/loud/image.png
 ```
 _NOTE: Both images must be 128x128 for some reason_
+#### Example
+```
+python3 ./ventriloquist.py ./images/popcat/closed.png ./images/popcat/open.png
+```
