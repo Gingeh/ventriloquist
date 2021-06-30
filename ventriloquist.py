@@ -3,8 +3,7 @@ import numpy as np
 from PIL import Image
 import alsaaudio
 import audioop
-
-name = "popcat"
+import sys
 
 inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,
                     alsaaudio.PCM_NONBLOCK,
@@ -12,8 +11,8 @@ inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,
                     rate=8000,
                     format=alsaaudio.PCM_FORMAT_S16_LE)
 
-quietimage = np.asarray(Image.open(f"images/{name}/closed.png").convert('RGB'), dtype=np.uint8)
-loudimage = np.asarray(Image.open(f"images/{name}/open.png").convert('RGB'), dtype=np.uint8)
+quietimage = np.asarray(Image.open(sys.argv[1]).convert('RGB'), dtype=np.uint8)
+loudimage = np.asarray(Image.open(sys.argv[2]).convert('RGB'), dtype=np.uint8)
 
 if quietimage.shape[:2] != (128, 128) or loudimage.shape[:2] != (128, 128):
     raise ValueError("Images must be 128x128 for some reason")
