@@ -14,7 +14,7 @@ inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,
 quietimage = np.asarray(Image.open(sys.argv[1]).convert('RGB'), dtype=np.uint8)
 loudimage = np.asarray(Image.open(sys.argv[2]).convert('RGB'), dtype=np.uint8)
 
-if quietimage.shape[:2] != (128, 128) or loudimage.shape[:2] != (128, 128):
+if quietimage.shape != (128, 128, 3) or loudimage.shape != (128, 128, 3):
     raise ValueError("Images must be 128x128 for some reason")
 
 camera = Camera(128, 128, 20, fmt=PixelFormat.RGB)
